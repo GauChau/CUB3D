@@ -6,7 +6,7 @@
 /*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:59:22 by gautierchau       #+#    #+#             */
-/*   Updated: 2025/01/16 15:23:20 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:30:12 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ int	texture_files_parser(char **line_split, t_mapdata *mapdata)
 {
 	if(line_split[2] != NULL)
 		return(write(2, "too much info on texture path line\n", 35), 2);
+	if (ft_strcmp(ft_strrchr(line_split[1], '.'), ".xmp"))
+	{
+		return (printf("error, .xmp needed\n"), 2);
+	}
 	int axess = access(line_split[1], F_OK);
 	if(axess != 0)
 		return (printf("access return: %d\n", axess),perror("access file error"), 2);
