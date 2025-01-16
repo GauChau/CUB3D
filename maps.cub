@@ -1,13 +1,27 @@
-NO /Users/gautierchauvot/Documents/42/cubed/parsing_cubed.c
-EA /Users/gautierchauvot/Documents/42/cubed/parsing_cubed.c
-WE /Users/gautierchauvot/Documents/42/cubed/parsing_cubed.c
-SO /Users/gautierchauvot/Documents/42/cubed/parsing_cubed.c
+NO /home/gchauvot/Documents/cub3d/v2/parsing_cubed.c
+EA /home/gchauvot/Documents/cub3d/v2/parsing_cubed.c
+
+
+
+
+WE /home/gchauvot/Documents/cub3d/v2/parsing_cubed.c
+SO /home/gchauvot/Documents/cub3d/v2/parsing_cubed.c
+F 200,0,150
+
+
 
 C 11,222,123
-F 2000,0,150
-F 111,333,444
 
-1111
-1001
-1001
-1111
+
+
+
+11111
+1011011
+1001111111
+11110011101
+    1111000111
+1111111E111
+11111111111111111111111111
+                11000000111
+                111100011
+               111111111
