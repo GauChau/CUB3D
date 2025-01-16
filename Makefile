@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+         #
+#    By: gautierchauvot <gautierchauvot@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 12:09:20 by gautierchau       #+#    #+#              #
-#    Updated: 2025/01/14 15:40:53 by gchauvot         ###   ########.fr        #
+#    Updated: 2025/01/16 23:10:54 by gautierchau      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
