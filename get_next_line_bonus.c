@@ -6,7 +6,7 @@
 /*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 12:13:20 by gchauvot          #+#    #+#             */
-/*   Updated: 2025/01/14 16:00:08 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:24:24 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include <stdint.h>
 #include "libft.h"
 #include "parser.h"
-
 
 char	*freejoin(char *res, char *buffer)
 {
