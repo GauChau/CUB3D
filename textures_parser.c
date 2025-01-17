@@ -6,7 +6,7 @@
 /*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:50:12 by gchauvot          #+#    #+#             */
-/*   Updated: 2025/01/17 14:26:27 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:36:40 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	info_parser(char *line, t_mapdata *mapdata)
 	return (ft_free_tab(line_split), 0);
 }
 
-int	datamapcheck(t_mapdata *mapdata, bool *mapbool, char *line)
+int	datamapcheck(t_mapdata *mapdata)
 {
 	if (!mapdata->north || !mapdata->south || !mapdata->west
 		|| !mapdata->east || mapdata->ceiling == -1 || mapdata->floor == -1)

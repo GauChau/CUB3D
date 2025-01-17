@@ -6,7 +6,7 @@
 /*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:59:22 by gautierchau       #+#    #+#             */
-/*   Updated: 2025/01/17 14:24:59 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:37:10 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	open_cube_file(char *filename, t_mapdata *mapdata)
 	}
 	else
 	{
-		if (reader(filename, file_fd, mapdata) != 0)
+		if (reader(file_fd, mapdata) != 0)
 			return (close(file_fd), 2);
 	}
 	return (close(file_fd), 0);
 }
 
-int	reader(char *filename, int file_fd, t_mapdata *mapdata)
+int	reader(int file_fd, t_mapdata *mapdata)
 {
 	char				*line;
 	static bool			mapbool;
@@ -51,7 +51,7 @@ int	reader(char *filename, int file_fd, t_mapdata *mapdata)
 		}
 		if (ft_strchr(line, '\n') && !mapbool)
 			ft_strchr(line, '\n')[0] = 0;
-		if (datamapcheck(mapdata, &mapbool, line) == 0)
+		if (datamapcheck(mapdata) == 0)
 		{
 			if (info_parser(line, mapdata))
 				return (free(line), 2);
@@ -68,38 +68,51 @@ int	freemapdata(t_mapdata *mapdata)
 	if (mapdata)
 	{
 		if (mapdata->east)
+		{
 			free (mapdata->east);
+			mapdata->east = NULL;
+		}
 		if (mapdata->north)
+		{
 			free (mapdata->north);
+			mapdata->north = NULL;
+		}
 		if (mapdata->south)
+		{
 			free (mapdata->south);
+			mapdata->south = NULL;
+		}
 		if (mapdata->west)
+		{
 			free (mapdata->west);
+		}
 		free(mapdata);
+		mapdata = NULL;
 	}
 	return (0);
 }
 
-int	cub_parser(int argc, char **argv)
+t_mapdata	*cub_parser(int argc, char **argv)
 {
 	t_mapdata	*mapdata;
 
 	if (argc != 2)
-		return (printf("not enough args\n"), 2);
+		return (printf("not enough args\n"), NULL);
 	if (ft_strcmp(".cub", ft_strrchr(argv[1], '.')))
-		return (write(2, "wrong filetype, .cub needed\n", 28), 2);
+		return (write(2, "wrong filetype, .cub needed\n", 28), NULL);
 	mapdata = ft_calloc(1, sizeof(t_mapdata));
 	if (!mapdata)
-		return (2);
+		return (NULL);
 	if (open_cube_file(argv[1], mapdata))
-		return (freemapdata(mapdata), printf("opencubfile error detected\n"), 0);
+		return (freemapdata(mapdata),
+			printf("opencubfile error detected\n"), NULL);
 	if (map_validity_checker(mapdata))
 		return (freemapdata(mapdata),
-			printf("map validity error detected\n"), 0);
-	freemapdata(mapdata);
+			printf("map validity error detected\n"), NULL);
+	return (mapdata);
 }
 
-int	main(int argc, char **argv, char **env)
+int	main(int argc, char **argv)
 {
 	cub_parser(argc, argv);
 	return (0);

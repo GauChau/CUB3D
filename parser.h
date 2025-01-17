@@ -6,7 +6,7 @@
 /*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:02:15 by gautierchau       #+#    #+#             */
-/*   Updated: 2025/01/17 14:24:24 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:36:47 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,28 @@ typedef struct s_mapdata
 }	t_mapdata;
 
 /*GNL*/
-int		ft_strlen_alt(char *dst, char *src, int siz, int alt);
-char	*get_next_line(int fd);
+int			ft_strlen_alt(char *dst, char *src, int siz, int alt);
+char		*get_next_line(int fd);
 
 /*PARSING CUBED #GENERAL*/
-int		open_cube_file(char *filename, t_mapdata *mapdata);
-int		reader(char *filename, int file_fd, t_mapdata *mapdata);
-int		freemapdata(t_mapdata *mapdata);
-int		cub_parser(int argc, char **argv);
+int			open_cube_file(char *filename, t_mapdata *mapdata);
+int			reader(int file_fd, t_mapdata *mapdata);
+int			freemapdata(t_mapdata *mapdata);
+t_mapdata	*cub_parser(int argc, char **argv);
 
 /*TEXTURES_PARSER*/
-int		info_parser(char *line, t_mapdata *mapdata);
-int		datamapcheck(t_mapdata *mapdata, bool *mapbool, char *line);
-int		texture_files_parser(char **line_split, t_mapdata *mapdata);
+int			info_parser(char *line, t_mapdata *mapdata);
+int			datamapcheck(t_mapdata *mapdata);
+int			texture_files_parser(char **line_split, t_mapdata *mapdata);
 
 /*MAP PARSER*/
-int		map_validity_checker(t_mapdata *mapdata);
-int		datamapcheck2(t_mapdata *mapdata, bool *mapbool, char *line);
-int		cross_checker(t_mapdata *mapdata, int x, int y);
-int		map_filler(int column, char *line, t_mapdata *mapdata);
+int			map_validity_checker(t_mapdata *mapdata);
+int			datamapcheck2(t_mapdata *mapdata, bool *mapbool, char *line);
+int			cross_checker(t_mapdata *mapdata, int x, int y);
+int			map_filler(int column, char *line, t_mapdata *mapdata);
 
 /*FLOOR CEILING*/
-int		fl_cl_parser(char *line, t_mapdata *mapdata);
-int		fl_cl_filler(char **line_split, int *color);
+int			fl_cl_parser(char *line, t_mapdata *mapdata);
+int			fl_cl_filler(char **line_split, int *color);
 
 #endif
