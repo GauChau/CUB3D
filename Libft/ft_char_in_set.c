@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_char_in_set.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:28:16 by jsaintho          #+#    #+#             */
-/*   Updated: 2024/12/06 14:29:34 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:58:48 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_char_in_set(char c, char *set)
 	int	i;
 
 	i = 0;
-	while (set[i])
+	while (set && set[i])
 	{
 		if (c == set[i])
 			return (1);

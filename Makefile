@@ -1,41 +1,58 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/14 12:09:20 by gautierchau       #+#    #+#              #
-#    Updated: 2025/01/17 14:09:17 by gchauvot         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = Cub3D
+SRCS_ = *.c ./parserr/*.c
+SRCS_OBJ = $(SRCS:.c=.o)
 
-OUT = parser
+CFLAGS = -Wall -Wextra -g
 
-
-SRC = get_next_line_utils_bonus.c get_next_line_bonus.c parsing_cubed.c floor_ceiling.c map_parser.c textures_parser.c
-SRC_OBJS = $(SRC:.c=.o)
-FLAGS = -Wall -Wextra -g
-HEADER = -I. -I$(LIBFT_DIR)
 LIBFT_DIR = Libft/
-LIBFT = $(LIBFT_DIR)libft.a
+LIBFT = $(LIBFT_DIR)/libft.a
 
-all: $(LIBFT) $(OUT)
+UNAME =$(shell uname -s)
+ifeq ($(shell uname -s), Linux)
+	INCLUDES = -I/usr/include -Imlx -I$(LIBFT_DIR) -I./includes -I./parser/parser.h
+else
+	INCLUDES = -I/opt/X11/include -Imlx -I$(LIBFT_DIR)
+endif
+
+MLX_DIR = ./mlx
+MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
+
+ifeq ($(shell uname -s), Linux)
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+else
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+endif
+
+all: $(LIBFT) $(MLX_LIB) $(NAME)
+
+ifeq (0, 1)
+	.c.o:
+	gcc $(CFLAGS) -c -o $@ $< $(INCLUDES)
+	$(NAME): $(SRCS_OBJ)
+	@echo "Compiling fractol..."
+	gcc $(CFLAGS) $(SRCS_) $(INCLUDES) -o $(NAME) $(SRCS_OBJ) $(MLX_FLAGS)
+endif
+
+$(MLX_LIB):
+	@echo "Making MiniLibX..."
+	@make -C $(MLX_DIR)
 
 $(LIBFT):
 	@echo "Making Libft.."
 	@make -C $(LIBFT_DIR)
 
-$(OUT): $(SRC_OBJS)
-	cc $(FLAGS) $(SRC_OBJS) $(HEADER) -lreadline -o $(OUT) $(LIBFT)
-
-$(SRC_OBJS): %.o: %.c
-	cc $(FLAGS) $(HEADER) -c $< -o $@
+$(NAME): $(SRCS_OBJ)
+	gcc $(CFLAGS) $(SRCS_) $(INCLUDES) -lm -o $(NAME) $(SRCS_OBJ) $(LIBFT) \
+		$(MLX_FLAGS)
 
 clean:
-	rm -f $(SRC_OBJS)
+	@echo "Removing .o files"
+	rm -f $(SRCS_OBJ)
+	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	rm -f $(OUT)
+	rm $(NAME)
 
-re: fclean all
+re : fclean all
+
+.PHONY: clean all

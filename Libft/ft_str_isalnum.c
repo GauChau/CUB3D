@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_isalnum.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:57:21 by jsaintho          #+#    #+#             */
-/*   Updated: 2024/12/11 16:35:33 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:45:41 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ int	ft_str_isalnum(char *s)
 	}
 	return (1);
 }
-

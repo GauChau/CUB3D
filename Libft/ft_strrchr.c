@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gautierchauvot <gautierchauvot@student.    +#+  +:+       +#+        */
+/*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:18:46 by julessainth       #+#    #+#             */
-/*   Updated: 2025/01/14 22:42:46 by gautierchau      ###   ########.fr       */
+/*   Updated: 2025/01/22 13:59:55 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
