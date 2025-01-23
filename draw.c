@@ -6,7 +6,7 @@
 /*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:56:23 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/23 14:27:10 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:20:08 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,28 @@ void	draw_line(t_cub3d *f)
 {
 	int	err;
 	int	e2;
-	int	dx;
-	int	dy;
+	int	dxy[2];
+	int	bank[2];
 
-	dx = abs(f->posdrw[2] - f->posdrw[0]);
+	bank[0] = f->posdrw[0];
+	bank[1] = f->posdrw[1];
+	dxy[0] = abs(f->posdrw[2] - f->posdrw[0]);
 	f->sx = sns(f->posdrw[0], f->posdrw[2]);
-	dy = -abs(f->posdrw[3] - f->posdrw[1]);
+	dxy[1] = -abs(f->posdrw[3] - f->posdrw[1]);
 	f->sy = sns(f->posdrw[1], f->posdrw[3]);
-	err = dx + dy;
-	while (1 && !(f->posdrw[0] == f->posdrw[2] && f->posdrw[1] == f->posdrw[3]))
+	err = dxy[0] + dxy[1];
+	while (1 && !(bank[0] == f->posdrw[2] && bank[1] == f->posdrw[3]))
 	{
-		set_pixel_color(f->fps, f->posdrw[0], f->posdrw[1], f->color);
+		set_pixel_color(f->fps, bank[0], bank[1], f->color);
 		e2 = 2 * err;
-		if (e2 >= dy)
-		{
-			err += dy;
-			f->posdrw[0] += f->sx;
-		}
-		if (e2 <= dx)
-		{
-			err += dx;
-			f->posdrw[1] += f->sy;
-		}
+		if (e2 >= dxy[1])
+			err += dxy[1];
+		if (e2 >= dxy[1])
+			bank[0] += f->sx;
+		if (e2 <= dxy[0])
+			err += dxy[0];
+		if (e2 <= dxy[0])
+			bank[1] += f->sy;
 	}
 }
 /*if (x1 < x0 || y1 < y0 || x0 > WIDTH || y0 > HEIGHT)
@@ -69,11 +69,15 @@ while (y0 < y1)
 
 void	draw_rect(t_cub3d *f)
 {
+	int	bank;
+
+	bank = f->posdrw[3];
 	if (f->posdrw[2] < f->posdrw[0] || f->posdrw[3] < f->posdrw[1]
 		|| f->posdrw[0] > WIDTH || f->posdrw[1] > HEIGHT)
 		return ;
-	while (f->posdrw[1] < f->posdrw[3])
+	while (f->posdrw[1] < bank)
 	{
+		f->posdrw[3] = f->posdrw[1];
 		draw_line(f);
 		f->posdrw[1]++;
 	}

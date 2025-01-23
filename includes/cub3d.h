@@ -6,7 +6,7 @@
 /*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:59:06 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/23 14:18:08 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:08:52 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@ struct s_cub3d
 	float		sz;
 	int			aax;
 	int			sx;
+	int			s_type;
 	int			y_y;
 	float		v_py;
 	float		v_px;
@@ -256,6 +257,7 @@ void		bullet_collisions(t_cub3d *f, int l);
 int			load_imgs(t_cub3d *f);
 int			init_things(t_cub3d *f, int argc, char **argv);
 void		shoot(t_cub3d *f);
+float		s_func(t_cub3d *f);
 
 // map
 int			position_to_map_tiles(int px, int py, t_cub3d *f);

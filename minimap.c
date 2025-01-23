@@ -6,7 +6,7 @@
 /*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:06:05 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/23 14:18:08 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:14:13 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	set_posdrwalls(t_cub3d *f, int x, int y)
 {
 	f->posdrw[0] = (x * (WIDTH / (f->map)->width)) / MINIMAP_RATIO;
+	printf("setposwal f->posdrw[0]:%d\n", f->posdrw[0]);
 	f->posdrw[1] = (y * (HEIGHT / (f->map)->height)) / MINIMAP_RATIO;
 	f->posdrw[2] = (((x + 1) * (WIDTH / (f->map)->width))) / MINIMAP_RATIO;
 	f->posdrw[3] = (((y + 1) * (HEIGHT / (f->map)->height))) / MINIMAP_RATIO;
@@ -22,6 +23,7 @@ void	set_posdrwalls(t_cub3d *f, int x, int y)
 
 void	set_posdrentities(t_cub3d *f, t_entity *e, int sz)
 {
+	printf("setppsredntites\n");
 	f->posdrw[0] = (int)((e)->x) / MINIMAP_RATIO;
 	f->posdrw[1] = (int)((e)->y) / MINIMAP_RATIO;
 	f->posdrw[2] = ((int)((e)->x) / MINIMAP_RATIO) + sz;
@@ -31,6 +33,7 @@ void	set_posdrentities(t_cub3d *f, t_entity *e, int sz)
 static void	draw_player(t_cub3d *f)
 {
 	f->color = 0x00FFFF;
+	printf("drawplayer\n");
 	f->posdrw[0] = (f->player)->x / MINIMAP_RATIO;
 	f->posdrw[1] = (f->player)->y / MINIMAP_RATIO;
 	f->posdrw[2] = ((f->player)->x / MINIMAP_RATIO) + 4;
@@ -52,6 +55,7 @@ void	draw_walls(t_cub3d *f)
 			if ((f->map)->map_matrix[y][x] == '1')
 			{
 				f->color = 0XFFFFFF;
+				printf("f->posdrw[0]:%d, x:%d\n", f->posdrw[0], x);
 				set_posdrwalls(f, x, y);
 				draw_rect(f);
 			}

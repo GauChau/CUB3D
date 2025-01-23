@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:20:10 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/23 13:33:48 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:07:53 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,12 @@ void	shoot(t_cub3d *f)
 	f->gun_i = 0;
 	p = (f->player)->rot;
 	init_projectile(f, f->player->x, f->player->y, p + 30);
+}
+
+float	s_func(t_cub3d *f)
+{
+	if (f->s_type == 2)
+		return (3);
+	else
+		return (1);
 }
