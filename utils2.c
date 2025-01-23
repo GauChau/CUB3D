@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:19:29 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/22 15:36:22 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:06:12 by gchauvot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,30 @@ int	hook_mousedown(int k_code, long x, long y, t_cub3d *f)
 	(void)(y);
 	if (k_code == 1)
 		shoot(f);
+	return (0);
 }
 
 int	aa(int ll, int px, int py, t_cub3d *f)
 {
 	if (ll != -1)
 	{
-		draw_line(f,
-			f->player->x / MINIMAP_RATIO, f->player->y / MINIMAP_RATIO,
-			px / MINIMAP_RATIO, py / MINIMAP_RATIO,
-			0xFFF000
-			);
+		f->color = 0xFFF000;
+		f->posdrw[0] = f->player->x / MINIMAP_RATIO;
+		f->posdrw[1] = f->player->y / MINIMAP_RATIO;
+		f->posdrw[2] = px / MINIMAP_RATIO;
+		f->posdrw[3] = py / MINIMAP_RATIO;
+		draw_line(f);
 	}
 	else
 	{
-		draw_line(f,
-			f->player->x / MINIMAP_RATIO, f->player->y / MINIMAP_RATIO,
-			px / MINIMAP_RATIO, py / MINIMAP_RATIO,
-			0xFF00FF
-			);
+		f->color = 0xFF00FF;
+		f->posdrw[0] = f->player->x / MINIMAP_RATIO;
+		f->posdrw[1] = f->player->y / MINIMAP_RATIO;
+		f->posdrw[2] = px / MINIMAP_RATIO;
+		f->posdrw[3] = py / MINIMAP_RATIO;
+		draw_line(f);
 	}
+	return (0);
 }
 
 int	keyboard(t_cub3d *f)

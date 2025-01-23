@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:41:23 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/22 16:46:52 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:33:13 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	check_entities(t_cub3d *f)
 			if ((int)(px) > WIDTH || (int)(py) > HEIGHT
 				|| position_to_map_tiles((px), (py), f) == 1)
 				break ;
-			px += (cos(degreesToRadians(((a - f->player->rot) - 60))));
-			py += (sin(degreesToRadians(((a - f->player->rot) - 60))));
+			px += (cos(degreestoradians(((a - f->player->rot) - 60))));
+			py += (sin(degreestoradians(((a - f->player->rot) - 60))));
 			wawer(f, px, py);
 			aa(f->ll, px, py, f);
 		}
@@ -116,7 +116,7 @@ void	render_entities(t_cub3d *f)
 				f->sprite_y = f->game_entities[l].y;
 				f->sprite_x = f->game_entities[l].x;
 				draw_sprite(f->game_entities[l].sprite, dst,
-					f, ENTITY_SZ(f->game_entities[l].type)
+					f, entity_sz(f->game_entities[l].type)
 					);
 			}
 		}

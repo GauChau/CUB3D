@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:52:44 by gchauvot          #+#    #+#             */
-/*   Updated: 2025/01/20 12:05:49 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:59:18 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,13 @@ int	fl_cl_filler(char **line_split, int *color)
 int	fl_cl_parser(char *line, t_mapdata *mapdata)
 {
 	char	**line_split;
-	int		i;
 
-	i = 0;
 	line_split = ft_split(line, ' ');
 	if (!line_split)
 		return (2);
 	if (!line_split[1])
 		return (ft_free_tab(line_split),
-			write(2, "no data on floor/ceiling color line\n", 42), 2);
+			write(2, "no data on floor/ceiling color line\n", 37), 2);
 	if (line_split[2] != 0)
 		return (ft_free_tab(line_split),
 			write(2, "too much info on floor/ceiling color line\n", 42), 2);
