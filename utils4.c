@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchauvot <gchauvot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:20:10 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/23 15:07:53 by gchauvot         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:08:07 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ int	load_imgs(t_cub3d *f)
 
 	i = 0;
 	load_sprite_files(f);
-	while (i < 4)
+	while (i < 5)
 	{
-		f->wall_textures[i] = calloc(1, sizeof(t_image));
+		printf("i: %d, f->wls[i]:%s \n", i, f->wls[i]);
+		f->wall_textures[i] = ft_calloc(1, sizeof(t_image));
 		if (!f->wall_textures[i])
 			return (-1);
 		f->wall_textures[i]->img = mlx_xpm_file_to_image(f->fps->mlx,
@@ -42,10 +43,9 @@ int	load_imgs(t_cub3d *f)
 
 int	init_things(t_cub3d *f, int argc, char **argv)
 {
-	f->map = malloc(sizeof(t_mapdata));
-	if (!f->map)
-		return (1);
 	f->map = cub_parser(argc, argv);
+	if (!f->map)
+		return (free(f), -1);
 	f->lasttime = clock();
 	f->player = malloc(sizeof(t_player));
 	f->last_mouse = -1;
@@ -66,6 +66,8 @@ void	shoot(t_cub3d *f)
 {
 	float	p;
 
+	if (f->shooting)
+		return ;
 	f->shooting = true;
 	f->gun_i = 0;
 	p = (f->player)->rot;
@@ -78,4 +80,16 @@ float	s_func(t_cub3d *f)
 		return (3);
 	else
 		return (1);
+}
+
+float	f_rot(char c)
+{
+	if (c == 'W')
+		return (180 - (FOV / 2));
+	if (c == 'E')
+		return (0 - (FOV / 2));
+	if (c == 'N')
+		return (90 - (FOV / 2));
+	if (c == 'S')
+		return (270 - (FOV / 2));
 }

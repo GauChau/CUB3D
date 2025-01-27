@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 17:18:46 by julessainth       #+#    #+#             */
-/*   Updated: 2024/05/27 11:37:34 by jsaintho         ###   ########.fr       */
+/*   Created: 2024/11/25 15:28:51 by jsaintho          #+#    #+#             */
+/*   Updated: 2024/12/11 12:27:38 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strjoin_free(char *s1, char *s2)
 {
-	int	i;
+	char	*new;
+	size_t	i;
+	size_t	j;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	if (s[i] == '\0' && (unsigned char)c == '\0')
-		return ((char *) &(s[i]));
-	while (i >= 0)
+	if (!ft_strlen(s2) || !s2)
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *) &(s[i]));
-		i--;
+		free(s2);
+		return (s1);
 	}
-	return (NULL);
+	new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		new[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		new[i + j] = s2[j];
+		j++;
+	}
+	new[i + j] = '\0';
+	free(s1);
+	free(s2);
+	return (new);
 }

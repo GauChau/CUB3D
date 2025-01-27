@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:31:33 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/23 12:06:59 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/24 12:45:31 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	load_sprite_files(t_cub3d *f)
 	f->wls[1] = "./textures/02.xpm";
 	f->wls[2] = "./textures/01.xpm";
 	f->wls[3] = "./textures/texture_03.xpm";
+	f->wls[4] = "./textures/door.xpm";
 	f->sp[0] = "./textures/enemy.xpm";
 	f->sp[1] = "./textures/BULLET.xpm";
 	f->gn[0] = "./textures/t0.xpm";

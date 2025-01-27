@@ -1,5 +1,8 @@
 NAME = Cub3D
-SRCS_ = *.c ./parserr/*.c
+SRCS_ = draw.c entities.c macro_utils.c map.c minimap.c player.c utils.c utils2.c \
+		utils3.c utils4.c utils5.c window.c cub3d.c ./parserr/floor_ceiling.c \
+		./parserr/get_next_line_bonus.c ./parserr/get_next_line_utils_bonus.c \
+		./parserr/map_parser.c ./parserr/parsing_cubed.c ./parserr/textures_parser.c
 SRCS_OBJ = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -g

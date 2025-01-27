@@ -6,7 +6,7 @@
 /*   By: jsaintho <jsaintho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:58:53 by jsaintho          #+#    #+#             */
-/*   Updated: 2025/01/23 13:34:05 by jsaintho         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:07:06 by jsaintho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,20 @@ int	render_next_frame(t_cub3d *f)
 	sprintf(a, "%d", (int)(f->fps_v));
 	mlx_string_put(f->fps->mlx, f->fps->win, WIDTH / 2, 30, 0xFFFFFF, "CUB3D");
 	mlx_string_put(f->fps->mlx, f->fps->win, WIDTH / 2, 45, 0xFFFFFF, a);
-	mlx_string_put(f->fps->mlx, f->fps->win, WIDTH / 2 + 15,
+	mlx_string_put(f->fps->mlx, f->fps->win, WIDTH / 2 + 20,
 		45, 0xFFFFFF, "FPS");
+	if (f->door_interact)
+		mlx_string_put(f->fps->mlx, f->fps->win, WIDTH / 2,
+			HEIGHT / 2, 0xFFFFFF, "PRESS (F) to open na noor");
+	return (0);
+}
+
+int	ft_close(void *p)
+{
+	t_cub3d	*f;
+
+	f = (t_cub3d *)(p);
+	clean_exit(f);
 	return (0);
 }
 
@@ -114,6 +126,7 @@ int	main(int argc, char **argv)
 	mlx_hook(f->fps->win, 2, 1L << 0, open_hook, f);
 	mlx_hook(f->fps->win, 3, 1L << 1, close_hook, f);
 	mlx_hook(f->fps->win, 4, 1L << 2, hook_mousedown, f);
+	mlx_hook(f->fps->win, 17, 0, ft_close, f);
 	mlx_loop_hook(f->fps->mlx, render_next_frame, f);
 	mlx_loop(f->fps->mlx);
 	return (0);
